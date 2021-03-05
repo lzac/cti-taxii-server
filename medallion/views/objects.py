@@ -73,7 +73,8 @@ def get_range_request_from_headers():
                 end_index = start_index + (current_app.taxii_config["max_page_size"] - 1)
             return start_index, end_index
         except (AttributeError, ValueError) as e:
-            raise ProcessingError("Bad Range header supplied", 400, e)
+            messsage = "Bad Range header supplied, headers: {}".format(request.headers)
+            raise ProcessingError(messsage, 400, e)
     else:
         return 0, current_app.taxii_config["max_page_size"] - 1
 
