@@ -218,7 +218,7 @@ class TaxiiFlask(Flask):
         self.taxii_config = None
 
 
-def create_app(cfg):
+def create_app(cfg="docker_config.json"):
     app = TaxiiFlask(__name__)
 
     if isinstance(cfg, dict):
